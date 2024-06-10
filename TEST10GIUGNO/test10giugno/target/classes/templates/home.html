@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pinacoteca</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+</head>
+<body>
+    <h1>Lista di Quadri</h1>
+    <div>
+        <a href="/add">Aggiungi un nuovo painting</a>
+    </div>
+    <div th:if="${paintings != null}">
+        <ul>
+            <li th:each="painting : ${paintings}">
+                <h2 th:text="${painting.name}">Nome del quadro</h2>
+                <p th:text="${painting.author}">Autore del quadro</p>
+                <p>Anno: <span th:text="${painting.year}"></span></p>
+            </li>
+        </ul>
+    </div>
+    <div th:if="${paintings == null || paintings.isEmpty()}">
+        <p>Non ci sono quadri.</p>
+    </div>
+</body>
+</html>
+
